@@ -1,0 +1,136 @@
+body {
+    font-family: Arial;
+    font-size: 14px;
+}
+.logo {
+    font-size: 100px;
+    font-weight: bolder;
+    letter-spacing: -6px;
+    color: #222;
+    margin: 50px;
+}
+.logo .number {
+    color: #222;
+    opacity: 0.1;
+}
+.navigation {
+    margin-left: 33px;
+}
+.navigation a {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 2px solid #222;
+    background: #222;
+    color: #fff;
+}
+.navigation a:hover {
+    color: #222;
+    background: transparent;
+}
+.container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 33px;
+    width: auto;
+}
+.container a {
+    color: #222;
+}
+.container table {
+    font-size: 11px;
+    margin-top: 20px;
+}
+.container table thead td {
+    background-color: #f5f5f5;
+    padding: 4px 10px;
+}
+.container table tbody td {
+    padding: 4px 10px;
+}
+.container .box {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    margin-top: 30px;
+}
+.container input {
+    background-color: #f5f5f5;
+    border: 0;
+    padding: 5px 10px;
+}
+.container input[type="submit"] {
+    background-color: #ccc;
+    cursor: pointer;
+}
+.container input[type="submit"]:hover {
+    background-color: #222;
+    color: #fff;
+}
+.container button {
+    background-color: #ccc;
+    border: 0;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.container button:hover {
+    background-color: #222;
+    color: #fff;
+}
+.footer {
+    padding: 20px;
+    margin: 33px;
+    text-align: right;
+    font-size: 11px;
+    opacity: 0.5;
+}
+.footer a {
+    color: #454545;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.table th{
+    background-color: #d3e3fd;
+    font-size: 14px;
+    text-align: center;
+}
+
+.table tr{
+    font-size: 14px;
+}
+
+.table_t1 td:nth-child(1){
+    text-align: center;
+    width: 8%;
+}
+.table_t1 td:nth-child(4),.table_t36 td:nth-child(5),.table_t36 td:nth-child(2),.table_t36 td:nth-child(3){
+    text-align: center;
+    width: 21%;
+}
+.table_t1 td:nth-child(6){
+    text-align: center;
+    width: 8%;
+}
+
+.text-bottom{
+    vertical-align: bottom;
+    text-align: right;
+}
+
+#_itogo{
+    text-align: right;
+}
+
+#form-add-expence{
+    display: inline-block;
+}
+
+.submit_for_adding{
+    margin-top: 15px;
+}
