@@ -13,6 +13,7 @@ class Payment extends Model
     public $direct_id;
     public $date;
     public $summ;
+    public $user_id;
 
     public $direct;
     public $category;
@@ -27,11 +28,11 @@ class Payment extends Model
     /**
      * Get all songs from database
      */
-    public function getAllPayments($filterParams=null)
+    public function getAllPayments($user_id, $filterParams=null)
     {
         $sql = "SELECT * FROM payment ";
         if($filterParams!=null){
-            $sql = $this->filterPaymentSql($filterParams,$sql);
+            $sql = $this->filterPaymentSql($filterParams,$sql, $user_id);
         }
 
         $query = $this->db->prepare($sql);
@@ -48,7 +49,7 @@ class Payment extends Model
         }
     }
 
-    public function filterPaymentSql($filterParams, $sql){
+    public function filterPaymentSql($filterParams, $sql, $user_id){
         $str ='';
         if(!empty($filterParams)){
             $str.=' WHERE ';
@@ -102,16 +103,16 @@ class Payment extends Model
                 }
             }
             if($str == ' WHERE '){
-                $str = '';
+                $str = ' WHERE user_id = '.$user_id.' ';
             }else{
-                $str = substr($str, 0, strlen($str)-4);
+                $str.= ' user_id = '.$user_id.' ';
             }
 
             if($filterParams['sort'] != 0 && $filterParams['sort'] !=''){
                 if($filterParams['sort_option']!=2){
-                    $str.= "ORDER BY ". $filterParams['sort']. " ASC";
+                    $str.= " ORDER BY ". $filterParams['sort']. " ASC";
                 }else{
-                    $str.= "ORDER BY ". $filterParams['sort']. " DESC";
+                    $str.= " ORDER BY ". $filterParams['sort']. " DESC";
                 }
             }
             return $sql.$str;
@@ -152,7 +153,7 @@ class Payment extends Model
     }
 
     public function addPayment($values){
-        $sql = "INSERT INTO payment (direct_id, category_id, date, summ) VALUES (:direct_id, :category_id, :date, :summ)";
+        $sql = "INSERT INTO payment (direct_id, category_id, date, summ, user_id) VALUES (:direct_id, :category_id, :date, :summ, :user_id)";
         if($this->addRow($sql, $values)){
             return true;
         }else{

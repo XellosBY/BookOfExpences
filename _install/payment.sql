@@ -4,6 +4,7 @@ CREATE TABLE `mini`.`payment` CHARACTER SET utf8 COLLATE utf8_general_ci(
   `direct_id` INT NOT NULL,
   `summ` FLOAT NOT NULL,
   `date` VARCHAR(20) NULL DEFAULT NULL,
+  `user_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC));
 
@@ -36,3 +37,10 @@ ADD CONSTRAINT `fk_payment_category`
 
 ALTER TABLE `mini`.`payment`
 CHANGE COLUMN `date` `date` VARCHAR(20) NULL DEFAULT NULL ;
+
+CREATE TABLE `mini`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC));

@@ -1,5 +1,7 @@
 $(function() {
 
+    $('#accordeon').accordion();
+
     // just a super-simple JS demo
 
     var demoHeaderBox;
@@ -13,6 +15,11 @@ $(function() {
             .css('color', 'green')
             .fadeIn('slow');
     }
+
+    $('#exit_button').on('click', function () {
+        deleteCookie('id');
+        deleteCookie('hash');
+    });
 
     $('#show_category_list').on('click', function(){
         ajaxLoadContent($('#show_category_list'), $('#all_category_list'),'ajaxGetCategoryList');
@@ -112,8 +119,10 @@ function ajaxLoadContent(button, area, action) {
                 area.html('');
                 button.val('Показать');
             }else{
+                if(action != 'ajaxGetPaymentsList'){
+                    button.val('Скрыть');
+                }
                 area.html(data);
-                button.val('Скрыть');
             }
 
             if(action == 'ajaxGetPaymentsList'){
@@ -188,4 +197,40 @@ function swapClass(object, classNow, classForSwap){
 
 function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function setCookie(name, value, options) {
+    options = options || {};
+
+    var expires = options.expires;
+
+    if (typeof expires == "number" && expires) {
+        var d = new Date();
+        d.setTime(d.getTime() + expires * 1000);
+        expires = options.expires = d;
+    }
+    if (expires && expires.toUTCString) {
+        options.expires = expires.toUTCString();
+    }
+
+    value = encodeURIComponent(value);
+
+    var updatedCookie = name + "=" + value;
+
+    for (var propName in options) {
+        updatedCookie += "; " + propName;
+        var propValue = options[propName];
+        if (propValue !== true) {
+            updatedCookie += "=" + propValue;
+        }
+    }
+
+    document.cookie = updatedCookie;
+}
+
+function deleteCookie(name) {
+    setCookie(name, "", {
+        expires: -1,
+        path: '/',
+    })
 }

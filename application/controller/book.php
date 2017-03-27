@@ -11,6 +11,8 @@ class Book extends Controller
     public $payment;
     public $category;
     public $direct;
+    public $user;
+    public $user_instance;
 
     function __construct()
     {
@@ -18,16 +20,20 @@ class Book extends Controller
         $this->payment = $this->loadModel('payment');
         $this->category = $this->loadModel('category');
         $this->direct = $this->loadModel('direct');
-
+        $this->user = $this->loadModel('user');
     }
 
+
+    /////////////////////// PAGES ////////////////////////
     /**
      * PAGE: index
      * This method handles what happens when you move to http://yourproject/songs/index
      */
     public function index()
     {
-        $payments = $this->payment->getAllPayments();
+
+        $this->user_instance = $this->getUser();
+        $payments = $this->payment->getAllPayments($this->user_instance->id);
 
         $categories = $this->category->getAllCategories();
         $categories = Helper::mapModel($categories, 'id', 'name');
@@ -39,11 +45,53 @@ class Book extends Controller
         $filter_categories = Helper::addNullRowArray($categories);
         $filter_sort = Helper::getFilterSortArray();
 
+        $user = $this->user_instance;
+
         // load views
         require APP . 'view/_templates/header.php';
         require APP . 'view/book/index.php';
         require APP . 'view/_templates/footer.php';
     }
+
+    public function auth(){
+        $error = [];
+
+        if(isset($_POST['enter'])){
+            $login = htmlspecialchars($_POST['login']);
+            $password = htmlspecialchars($_POST['password']);
+            $user = User::getUserByLogin($login, $this->db);
+
+            if(md5(md5($password)) === $user->password){
+                $hash = md5(Helper::generateCode(10));
+                User::setNewHashById($hash, $user->id, $this->db);
+
+                setcookie("id", $user->id, time()+60*60*24*30, '/');
+                setcookie("hash", $hash, time()+60*60*24*30, '/');
+
+                header('location: ' . URL . 'book/index');
+                exit();
+            }else{
+                $error[] = 'Произошел сбой авторизации';
+            }
+        }elseif(isset($_POST['register'])){
+            $login = htmlspecialchars($_POST['login']);
+            $password = htmlspecialchars($_POST['password']);
+            $error = Helper::checkLogin($login);
+            if(empty($error)){
+                if(User::createNewUser($login, $password, $this->db)){
+                    header('location: ' . URL . 'book/auth');
+                    exit();
+                }else{
+                    $error[] = 'Не удалось создать пользователя';
+                }
+            }
+        }
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/book/authorization.php';
+        require APP . 'view/_templates/footer.php';
+    }
+
+    /////////////////// END PAGES /////////////////////////////
 
     ////////////////// AJAX FUNCTIONS //////////////
 
@@ -53,6 +101,8 @@ class Book extends Controller
     }
 
     public function ajaxGetPaymentsList(){
+        $this->user_instance = $this->getUser();
+
         if(isset($_POST['with_filters'])){
             $filter_params = [];
             $period = $_POST['period'];
@@ -70,11 +120,11 @@ class Book extends Controller
                     $filter_params['date_end'] = $time[1];
                 }
             }
-            $payments = $this->payment->getAllPayments($filter_params);
+            $payments = $this->payment->getAllPayments($this->user_instance->id, $filter_params);
             require APP. 'view/book/wrappers/paymentlist.php';
             exit();
         }
-        $payments = $this->payment->getAllPayments();
+        $payments = $this->payment->getAllPayments($this->user_instance->id);
         require APP. 'view/book/wrappers/paymentlist.php';
     }
 
@@ -148,4 +198,10 @@ class Book extends Controller
     }
 
     ///////////////////// END CRUD FUNCTIONS //////////////
+
+    public function getUser(){
+        if(isset($_COOKIE['id'])){
+           return $this->user_instance = User::getUserById($_COOKIE['id'], $this->db);
+        }
+    }
 }

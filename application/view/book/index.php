@@ -6,25 +6,12 @@
  * Time: 17:11
  */
 ?>
-<div id="top"></div>
-<div class="container" id="payments">
-    <h2>Платежи</h2>
-    <div class="box">
-
+<div class="container" id="accordeon">
+    <h3>Добавление платежа</h3>
+    <div>
         <form action="<?php echo URL; ?>book/addExpense" method="POST" id="form-add-expence">
             <table>
-                <tr>
-                    <td>
-                        <h3>Добавление платежа</h3>
-                    </td>
-                    <td>
-                        <a href="#" id="show_add_expence_row"><i class="icon-chevron-down"></i></a>
-                    </td>
-                    <td colspan="3">
-
-                    </td>
-                </tr>
-                <tr id="add_expence_row" class="hidden">
+                <tr id="add_expence_row">
                     <td>
                         <label>Направление платежа</label>
                         <select name="Payment[direct_id]">
@@ -56,8 +43,8 @@
             </table>
         </form>
     </div>
-    <div class="box">
-        <h2>Фильтр платежей</h2>
+    <h3>Фильтр платежей</h3>
+    <div>
         <table>
             <tr>
                 <td>
@@ -123,25 +110,11 @@
         </table>
         <div id="all_payments_list"></div>
     </div>
-</div>
-
-<div class="container" id="category">
-    <h2>Категории</h2>
-    <div class="box">
+    <h3>Категории</h3>
+    <div>
         <form action="<?php echo URL; ?>book/addCategory" method="POST" id="form-add-category">
             <table>
-                <tr>
-                    <td>
-                        <h3>Добавление категории</h3>
-                    </td>
-                    <td>
-                        <a href="#" id="show_add_category_row"><i class="icon-chevron-down"></i></a>
-                    </td>
-                    <td>
-                        <input type="button" id="show_category_list" name="show_category_list" value="Показать" />
-                    </td>
-                </tr>
-                <tr id="add_category_row" class="hidden">
+                <tr id="add_category_row">
                     <td>
                         <label>Название категории</label>
                         <input type="date" name="Category[name]" id="date" value="" required />

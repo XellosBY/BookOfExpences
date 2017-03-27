@@ -14,5 +14,39 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library name="PHP" type="php">
+        <CLASSES>
+          <root url="file://$USER_HOME$" />
+          <root url="file:///usr/share/php" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$USER_HOME$" />
+          <root url="file:///usr/share/php" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="PHARS">
+        <CLASSES>
+          <root url="phar://$USER_HOME$/Документы/site2test/codecept.phar/" />
+          <root url="phar:///usr/share/php/yii2/composer.phar/" />
+          <root url="phar://$USER_HOME$/.composer/2016-05-17_12-25-44-1.1.1-old.phar/" />
+          <root url="phar://$USER_HOME$/Документы/site2test/composer.phar/" />
+          <root url="phar:///usr/share/php/extlib3/codecept.phar/" />
+          <root url="phar://$USER_HOME$/.cache/composer/composer-temp.phar/" />
+          <root url="phar://$USER_HOME$/composer.phar/" />
+        </CLASSES>
+        <SOURCES>
+          <root url="phar://$USER_HOME$/Документы/site2test/codecept.phar/" />
+          <root url="phar:///usr/share/php/yii2/composer.phar/" />
+          <root url="phar://$USER_HOME$/.composer/2016-05-17_12-25-44-1.1.1-old.phar/" />
+          <root url="phar://$USER_HOME$/Документы/site2test/composer.phar/" />
+          <root url="phar:///usr/share/php/extlib3/codecept.phar/" />
+          <root url="phar://$USER_HOME$/.cache/composer/composer-temp.phar/" />
+          <root url="phar://$USER_HOME$/composer.phar/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

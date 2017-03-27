@@ -60,6 +60,33 @@ class Helper
         return $array;
     }
 
+    static public function generateCode($length=6) {
+
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHI JKLMNOPRQSTUVWXYZ0123456789";
+
+        $code = "";
+
+        $clen = strlen($chars) - 1;
+        while (strlen($code) < $length) {
+
+            $code .= $chars[mt_rand(0,$clen)];
+        }
+
+        return $code;
+    }
+
+    public static function checkLogin($login){
+        $error = [];
+        if(!preg_match("/^[a-zA-Z0-9]+$/",$login)){
+            $error[] = "Логин может состоять только из букв английского алфавита и цифр";
+        }
+
+        if(strlen($login) < 3 or strlen($login) > 30){
+            $error[] = "Логин должен быть не меньше 3-х символов и не больше 30";
+        }
+        return $error;
+    }
+
     public static function getFilterSortArray(){
         return
         [

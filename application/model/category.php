@@ -31,7 +31,9 @@ class Category extends Model
 
     public function addCategory($values){
         $sql = "INSERT INTO category (name) VALUES (:name)";
-        if($this->addRow($sql, $values)){
+        $query = $this->db->prepare($sql);
+        $parameters = [':name',$values['name']];
+        if($query->execute($parameters)){
             return true;
         }else{
             return false;

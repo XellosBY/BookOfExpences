@@ -15,6 +15,8 @@ body {
 }
 .navigation {
     margin-left: 33px;
+    width: 60%;
+    display: inline-block;
 }
 .navigation a {
     display: inline-block;
@@ -30,6 +32,11 @@ body {
 .navigation a:hover {
     color: #222;
     background: transparent;
+}
+.user_block{
+    text-align: right;
+    float: right;
+    margin-right: 33px;
 }
 .container {
     border: 1px solid #ddd;
@@ -121,6 +128,14 @@ body {
 .text-bottom{
     vertical-align: bottom;
     text-align: right;
+}
+
+.right{
+    text-align: right;
+}
+
+.normaltext{
+    font-size: 16px;
 }
 
 #_itogo{

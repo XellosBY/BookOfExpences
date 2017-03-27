@@ -133,6 +133,7 @@ class Model
         foreach ($values as $key=>$value){
             $parameters[':'.$key] = $value;
         }
+        $parameters[':user_id'] = $_COOKIE['id'];
         if($query->execute($parameters)){
             return true;
         }else{
@@ -142,7 +143,7 @@ class Model
 
     public function deleteRow($id ,$sql){
         $query = $this->db->prepare($sql);
-        $parameters = array(':id' => $id);
+        $parameters = [':id' => $id];
         if($query->execute($parameters)){
             return true;
         }else{

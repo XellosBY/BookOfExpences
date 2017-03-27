@@ -23,10 +23,15 @@
     <div class="logo">
         BOOK
     </div>
-
-    <!-- navigation -->
-    <div class="navigation">
-        <a href="<?php echo URL; ?>book/index#top">Начало</a>
-        <a href="<?php echo URL; ?>book/index#payments">Платежи</a>
-        <a href="<?php echo URL; ?>book/index#category">Категории</a>
-    </div>
+    <?if(isset($_COOKIE['id']) && isset($_COOKIE['hash'])){?>
+        <!-- navigation -->
+        <div class="navigation">
+            <a href="<?php echo URL; ?>book/index#top">Начало</a>
+            <a href="<?php echo URL; ?>book/index#payments">Платежи</a>
+            <a href="<?php echo URL; ?>book/index#category">Категории</a>
+        </div>
+        <div class="user_block">
+            <span>Имя пользователя: </span><span class="right"><?= isset($user->name)?$user->name:''?> /</span>
+            <a href="<?php echo URL; ?>book/auth" id="exit_button">Выйти</a>
+        </div>
+    <?}?>
