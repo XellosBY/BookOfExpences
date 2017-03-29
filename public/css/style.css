@@ -26,7 +26,7 @@ body {
     text-transform: uppercase;
     font-weight: bold;
     border: 2px solid #222;
-    background: #222;
+    background: #6c6c6c;
     color: #fff;
 }
 .navigation a:hover {
@@ -36,7 +36,8 @@ body {
 .user_block{
     text-align: right;
     float: right;
-    margin-right: 33px;
+    margin-right: 7%;
+    margin-top: 20px;
 }
 .container {
     border: 1px solid #ddd;
@@ -64,17 +65,17 @@ body {
     margin-top: 30px;
 }
 .container input {
-    background-color: #f5f5f5;
+    background-color: #fff8f1;
     border: 0;
     padding: 5px 10px;
 }
 .container input[type="submit"] {
-    background-color: #ccc;
+    background-color: #cccccc;
     cursor: pointer;
 }
 .container input[type="submit"]:hover {
     background-color: #222;
-    color: #fff;
+    color: #ffffff;
 }
 .container button {
     background-color: #ccc;
@@ -149,3 +150,104 @@ body {
 .submit_for_adding{
     margin-top: 15px;
 }
+
+.ui-state-default .ui-icon{
+    background-image: url("/public/img/ui-icons_777777_256x240.png");
+}
+
+    /*
+    buttons start ///////////////////////////////////////////
+     */
+a.button11 {
+    position: relative;
+    z-index: 1;
+    color: black;
+    font-size: 135%;
+    font-weight: 700;
+    text-decoration: none;
+    padding: .25em .5em;
+}
+a.button11:after {
+    content: "Выйти";  /* здесь 6 букв */
+    position: absolute;
+    z-index: -1;
+    top: -2px;
+    bottom: -2px;
+    left: -2px;
+    width: calc(100% + 6*(1em*90/135) - 2px*2*2);  /* где 6*(1em*90/135), где 6 - это 6 букв, 90 - это font-size after, а 135 - это font-size родителя */
+    text-align: right;
+    color: #fff;
+    font-size: 90%;
+    padding: .25em .5em;
+    border-radius: 5px;
+    border: 2px solid #000000;
+    -webkit-transform: skewX(-10deg);
+    transform: skewX(-10deg);
+    background: linear-gradient(#d3d4d3, #000000) no-repeat 100% 0;
+    background-size: calc(6*(1em*90/135) + .5em) 100%;
+    box-shadow: inset calc(-6*(1em*90/135) - .5em) 0 rgba(255,255,255,0);
+    transition: .3s;
+}
+a.button11:hover:after {
+    box-shadow: inset calc(-6*(1em*90/135) - .5em) 0 rgba(255,255,255,.2);
+}
+a.button11:active:after {
+    background-image: linear-gradient(#000000, #d3d4d3);
+}
+
+a.button27 {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    height: 2em;
+    line-height: 2em;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px #ddd inset, 0 1px 1px #fff;
+}
+a.button27:hover {
+    background: #dcdcdc linear-gradient(#fff, #dcdcdc);
+    box-shadow: 0 0 0 1px #aaa inset, 0 1px 1px #aaa;
+}
+a.button27:active {
+    background: none;
+    box-shadow: 0 0 0 1px #bbb inset, 0 1px 3px rgba(0,0,0,.5) inset, 0 1px 2px #fff;
+}
+
+.button28 {
+    position: relative;
+    display: inline-block;
+    font-size: 90%;
+    font-weight: 700;
+    color: rgb(209,209,217);
+    text-decoration: none;
+    text-shadow: 0 -1px 2px rgba(0,0,0,.2);
+    padding: .5em 1em;
+    outline: none;
+    border-radius: 3px;
+    background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);
+    box-shadow:
+            0 1px rgba(255,255,255,.2) inset,
+            0 3px 5px rgba(0,1,6,.5),
+            0 0 1px 1px rgba(0,1,6,.2);
+    transition: .2s ease-in-out;
+}
+.button28:hover:not(:active) {
+    background: linear-gradient(rgb(126,126,134), rgb(70,71,76)) rgb(126,126,134);
+}
+.button28:active {
+    top: 1px;
+    background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
+    box-shadow:
+            0 0 1px rgba(0,0,0,.5) inset,
+            0 2px 3px rgba(0,0,0,.5) inset,
+            0 1px 1px rgba(255,255,255,.1);
+}
+
+/*
+//////////////////// buttons end
+ */

@@ -11,27 +11,27 @@
     <!-- See more here: http://stackoverflow.com/q/2105327/1114320 -->
 
     <!-- CSS -->
-    <link href="<?php echo URL; ?>css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo URL; ?>css/jquery-ui.css" rel="stylesheet">
     <link href="<?php echo URL; ?>css/jquery-ui.theme.css" rel="stylesheet">
+    <link href="<?php echo URL; ?>css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo URL; ?>css/bootstrap-editable.css" rel="stylesheet">
     <link href="<?php echo URL; ?>css/style.css" rel="stylesheet">
 
 </head>
 <body>
     <!-- logo -->
-    <div class="logo">
+    <div id="top" class="logo">
         BOOK
     </div>
     <?if(isset($_COOKIE['id']) && isset($_COOKIE['hash'])){?>
         <!-- navigation -->
         <div class="navigation">
-            <a href="<?php echo URL; ?>book/index#top">Начало</a>
-            <a href="<?php echo URL; ?>book/index#payments">Платежи</a>
-            <a href="<?php echo URL; ?>book/index#category">Категории</a>
+            <a href="<?php echo URL; ?>book/index" class="button27">Начало</a>
+            <a href="<?php echo URL; ?>book/index" class="button27">Платежи</a>
+            <a href="<?php echo URL; ?>book/index" onclick="" class="button27">Фильтр платежей</a>
+            <a href="<?php echo URL; ?>book/index" class="button27">Категории</a>
         </div>
         <div class="user_block">
-            <span>Имя пользователя: </span><span class="right"><?= isset($user->name)?$user->name:''?> /</span>
-            <a href="<?php echo URL; ?>book/auth" id="exit_button">Выйти</a>
+            <a href="<?php echo URL; ?>book/auth" class="button11" id="exit_button"><?= isset($user->name)?$user->name:''?></a>
         </div>
     <?}?>

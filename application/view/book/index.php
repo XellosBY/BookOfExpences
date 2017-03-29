@@ -13,16 +13,16 @@
             <table>
                 <tr id="add_expence_row">
                     <td>
-                        <label>Направление платежа</label>
-                        <select name="Payment[direct_id]">
+                        <label for="payment_direct_id">Направление платежа</label>
+                        <select id="payment_direct_id" name="Payment[direct_id]">
                             <?foreach ($directs as $key=>$d){?>
                                 <option value="<?=$key?>"><?=$d?></option>
                             <?}?>
                         </select>
                     </td>
                     <td>
-                        <label>Категория</label>
-                        <select name="Payment[category_id]">
+                        <label for="payment_category_id">Категория</label>
+                        <select id="payment_category_id" name="Payment[category_id]">
                             <?foreach ($categories as $key=>$category){?>
                                 <option value="<?=$key?>"><?=$category?></option>
                             <?}?>
@@ -34,10 +34,10 @@
                     </td>
                     <td>
                         <label>Дата</label>
-                        <input type="date" name="Payment[date]" id="date" value="" required />
+                        <input type="text" name="Payment[date]" id="date" value="" required />
                     </td>
                     <td>
-                        <input type="submit" id="submit_add_expence" class="submit_for_adding" name="submit_add_expense" value="Submit" />
+                        <input type="submit" id="submit_add_expence" class="submit_for_adding button28" name="submit_add_expense" value="Добавить" />
                     </td>
                 </tr>
             </table>
@@ -57,11 +57,11 @@
                 </td>
                 <td>
                     <label>Дата c</label>
-                    <input type="date" name="date_start" id="date_start" value="" />
+                    <input type="text" name="date_start" id="date_start" value="" />
                 </td>
                 <td>
                     <label>Дата по</label>
-                    <input type="date" name="date_end" id="date_end" value="" />
+                    <input type="text" name="date_end" id="date_end" value="" />
                 </td>
                 <td>
                     <label>Сумма</label>
@@ -103,9 +103,9 @@
                         <?}?>
                     </select>
                 </td>
-                <td class="text-bottom"><input type="button" id="clear_payments_list_filter" class="submit_for_adding" name="clear_payments_list_filter" value="Очистить" /></td>
-                <td class="text-bottom"><input type="button" id="hide_payments_list" class="submit_for_adding hidden" name="hide_payments_list" value="Скрыть" /></td>
-                <td class="text-bottom"><input type="button" id="show_payments_list" class="submit_for_adding" name="show_payments_list" value="Показать" /></td>
+                <td class="text-bottom"><input type="button" id="clear_payments_list_filter" class="submit_for_adding button28" name="clear_payments_list_filter" value="Очистить" /></td>
+                <td class="text-bottom"><input type="button" id="hide_payments_list" class="submit_for_adding hidden button28" name="hide_payments_list" value="Скрыть" /></td>
+                <td class="text-bottom"><input type="button" id="show_payments_list" class="submit_for_adding button28" name="show_payments_list" value="Показать" /></td>
             </tr>
         </table>
         <div id="all_payments_list"></div>
@@ -121,10 +121,10 @@
                     </td>
                     </td>
                     <td>
-                        <input type="submit" id="submit_add_category" class="submit_for_adding" name="submit_add_category" value="Добавить" />
+                        <input type="submit" id="submit_add_category" class="submit_for_adding button28" name="submit_add_category" value="Добавить" />
                     </td>
                     <td>
-
+                        <input type="button" id="show_category_list" class="submit_for_adding button28" name="show_category_list" value="Показать все" />
                     </td>
                 </tr>
             </table>

@@ -1,6 +1,13 @@
 $(function() {
 
-    $('#accordeon').accordion();
+    $('#accordeon').accordion(
+        {
+            heightStyle: "content",
+            icons:{
+                header: "ui-icon-circle-arrow-e",
+                activeHeader: "ui-icon-circle-arrow-s"
+            },
+        });
 
     // just a super-simple JS demo
 
@@ -29,7 +36,7 @@ $(function() {
         $('#all_payments_list').html('');
         $('#hide_payments_list').addClass('hidden');
     });
-    
+
     $('#clear_payments_list_filter').on('click', function () {
         date_start = $('#date_start').val('');
         date_end = $('#date_end').val('');
@@ -48,9 +55,6 @@ $(function() {
 
 $(function(){
     //$('#date').datepicker({dateFormat: 'yyyy-mm-dd'}); //calendar
-    $('#date').datepicker({format: 'dd.mm.yyyy'});
-    $('#date_start').datepicker({format: 'dd.mm.yyyy'});
-    $('#date_end').datepicker({format: 'dd.mm.yyyy'});
 
     $('#show_add_expence_row').on('click',function (event) {
         event.preventDefault();
