@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MINI</title>
+    <title>BOOK</title>
+    <link rel="shortcut icon" class="logotip" href="/public/img/icons.png" type="image/png">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,7 +21,7 @@
 </head>
 <body>
     <!-- logo -->
-    <div id="top" class="logo">
+    <div id="top" class="logo center">
         BOOK
     </div>
     <?if(isset($_COOKIE['id']) && isset($_COOKIE['hash'])){?>
