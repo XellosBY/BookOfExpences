@@ -238,3 +238,6 @@ function deleteCookie(name) {
         path: '/',
     })
 }
+
+/////// dialog part ////
+

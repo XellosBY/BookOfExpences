@@ -161,6 +161,14 @@ class Payment extends Model
         }
     }
 
+    public function updatePaymentById($values){
+        foreach ($values as $name=>$value){
+            if($name!='id'){
+                $this->updateValueById($values['id'], $name, $value);
+            }
+        }
+    }
+
     public function updateValueById($pk, $name, $value){
         $sql = "UPDATE payment SET ".$name." = :value WHERE id = :id";
         $query = $this->db->prepare($sql);

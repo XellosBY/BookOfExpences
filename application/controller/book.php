@@ -153,6 +153,15 @@ class Book extends Controller
             echo $answer;
         }
     }
+
+    public function ajaxLoadPayment($id){
+        $ajax_payment = $this->payment->getPaymentById($id);
+        $categories = $this->category->getAllCategories();
+        $categories = Helper::mapModel($categories, 'id', 'name');
+        $directs = $this->direct->getAllDirects();
+        $directs = Helper::mapModel($directs, 'id', 'name');
+        require APP. 'view/book/dialog/updatepayment.php';
+    }
     ////////////////// END AJAX FUNCTIONS //////////
 
 
@@ -165,6 +174,17 @@ class Book extends Controller
             }
         }
         header('location: ' . URL . 'book/index');
+    }
+
+    public function updateExpence(){
+        $values = [];
+        $values['id'] = htmlspecialchars($_POST['id'], ENT_QUOTES, 'UTF-8');
+        $values['category_id'] = htmlspecialchars($_POST['category_id'], ENT_QUOTES, 'UTF-8');
+        $values['direct_id'] = htmlspecialchars($_POST['direct_id'], ENT_QUOTES, 'UTF-8');
+        $values['date'] = htmlspecialchars($_POST['date'], ENT_QUOTES, 'UTF-8');
+        $values['summ'] = htmlspecialchars($_POST['summ'], ENT_QUOTES, 'UTF-8');
+
+        $this->payment->updatePaymentById($values);
     }
 
 

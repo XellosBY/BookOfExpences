@@ -12,16 +12,11 @@
     <!-- more http://www.paulirish.com/2010/the-protocol-relative-url/ -->
     <script src="<?php echo URL; ?>js/jquery.js" type="text/javascript"></script>
     <script src="<?php echo URL; ?>js/jquery-ui.js" type="text/javascript"></script>
+    <script src="<?php echo URL; ?>js/dialog.js" type="text/javascript"></script>
 
     <script src="<?php echo URL; ?>js/datepicker.js"></script>
     <!-- our JavaScript -->
     <script src="<?php echo URL; ?>js/application.js"></script>
-
-
-
-
-    <script src="<?php echo URL; ?>js/bootstrap.min.js"></script>
-    <script src="<?php echo URL; ?>js/bootstrap-editable.min.js"></script>
 
 
     <script>

@@ -6,6 +6,7 @@
  * Time: 17:11
  */
 ?>
+
 <div class="container" id="accordeon">
     <h3>Добавление платежа</h3>
     <div>
@@ -139,6 +140,8 @@
     <div id="javascript-ajax-result-box"></div>
 </div>
 -->
+
+<div id="place_for_dialog"></div>
 
 
 
