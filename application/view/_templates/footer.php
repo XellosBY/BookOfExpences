@@ -12,6 +12,7 @@
     <!-- more http://www.paulirish.com/2010/the-protocol-relative-url/ -->
     <script src="<?php echo URL; ?>js/jquery.js" type="text/javascript"></script>
     <script src="<?php echo URL; ?>js/jquery-ui.js" type="text/javascript"></script>
+    <script src="<?php echo URL; ?>js/jqueryui-editable.min.js" type="text/javascript"></script>
     <script src="<?php echo URL; ?>js/dialog.js" type="text/javascript"></script>
 
     <script src="<?php echo URL; ?>js/datepicker.js"></script>
@@ -27,7 +28,3 @@
 
 </body>
 </html>
-
-    <!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><title>ХостингЭкстмедиа</title>
-        <meta name="description" content="Хостинг в Беларуси и регистрация доменов с 2001 года. Полный спектр хостинг услуг: виртуальный хостинг, хостинг VPS, аренда сервера, co-location"><meta name="keywords"content="Сервер отключен за неоплату, веб-хостинг, услуги хостинга, регистрация доменов, выделенный сервер, colocation">
-        <link href='http://fonts.googleapis.com/css?family=PT+Sans&subset=latin,cyrillic'rel='stylesheet'type='text/css'><style type="text/css">

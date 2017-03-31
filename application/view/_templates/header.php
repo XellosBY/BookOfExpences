@@ -13,7 +13,8 @@
 
     <!-- CSS -->
     <link href="<?php echo URL; ?>css/jquery-ui.css" rel="stylesheet">
-    <link href="<?php echo URL; ?>css/jquery-ui.theme.css" rel="stylesheet">
+    <link href="<?php echo URL; ?>css/jquery-ui.theme.css" rel="stylesheset">
+    <link href="<?php echo URL; ?>css/jquery-editable.css" rel="stylesheet">
     <link href="<?php echo URL; ?>css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo URL; ?>css/bootstrap-editable.css" rel="stylesheet">
     <link href="<?php echo URL; ?>css/style.css" rel="stylesheet">

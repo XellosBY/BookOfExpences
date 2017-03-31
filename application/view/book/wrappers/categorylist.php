@@ -22,10 +22,30 @@
             <?php $i++;?>
             <tr>
                 <td><?=$i?></td>
-                <td><?php if (isset($category->name)) echo htmlspecialchars($category->name, ENT_QUOTES, 'UTF-8'); ?></td>
-                <td><a href="#" onclick="event.preventDefault();delete_category(<?=$category->id?>)"><i class="icon-trash"></i></a></td>
+                <td>
+                    <a href="#" id="categoryname_<?=$category->id?>">
+                        <?php if (isset($category->name)) echo htmlspecialchars($category->name, ENT_QUOTES, 'UTF-8'); ?>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" onclick="event.preventDefault();delete_category(<?=$category->id?>)"><i class="icon-trash"></i></a>
+                </td>
             </tr>
+            <script>
+                $(function() {
+                    var id = <?=$category->id?>;
+                    $('#categoryname_' + id).editable({
+                        type: 'text',
+                        pk: id,
+                        name: 'name',
+                        mode: 'inline',
+                        url: location.search + '/book/updateRowByAjax/' + id + '/category',
+                    });
+                });
+            </script>
         <?php } ?>
     <?}?>
     </tbody>
 </table>
+
+

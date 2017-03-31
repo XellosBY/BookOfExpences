@@ -31,7 +31,8 @@
             <td id="<?=$payment->direct_id.'_'.$i?>" class="payment_summ"><?php if (isset($payment->summ)) echo htmlspecialchars($payment->summ, ENT_QUOTES, 'UTF-8'); ?></td>
             <td>
                 <a href="#" onclick="event.preventDefault();delete_payment(<?=$payment->id?>)"><i class="icon-trash"></i></a>
-                <a href="#" onclick="event.preventDefault();updateDialog.update_payment_row(<?=$payment->id?>)"><i class="icon-edit"></i></a>
+                <a href="#" onclick="event.preventDefault();updateDialog.update_payment_row(<?=$payment->id?>);"><i class="icon-edit"></i></a>
+                <a href="#" onclick="event.preventDefault();enter_admin_mode(<?=$payment->id?>,'on')"><i class="icon-pencil"></i></a>
             </td>
         </tr>
     <?php } ?>

@@ -157,8 +157,20 @@ function enter_admin_mode(id, admin_mode) {
 
 function setNumberColumn(id) {
     next = $('#paymentrow_'+id).next().children(':nth-child(1)').html();
-    current = parseInt(next - 1);
-    $('#id_'+id).html(current);
+    if(next == ''){
+        previous = $('#paymentrow_'+id).prev().children(':nth-child(1)').html();
+
+        if(previous == ''){
+            $('#id_'+id).html(1);
+        }else{
+            prev = parseInt(previous);
+            current = prev + parseInt(1);
+            $('#id_'+id).html(current);
+        }
+    }else{
+        current = parseInt(next - 1);
+        $('#id_'+id).html(current);
+    }
 }
 
 function countPaymentSummItogo() {
@@ -239,5 +251,4 @@ function deleteCookie(name) {
     })
 }
 
-/////// dialog part ////
 

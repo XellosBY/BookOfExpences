@@ -144,12 +144,16 @@ class Book extends Controller
         require APP. 'view/book/wrappers/normalpaymentrow.php';
     }
 
-    public function updateRowByAjax($id){
+    public function updateRowByAjax($id, $model_name){
         if(isset($_POST['pk']) && isset($_POST['name']) && isset($_POST['value'])){
             $pk = htmlspecialchars($_POST['pk'], ENT_QUOTES, 'UTF-8');
             $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
             $value = htmlspecialchars($_POST['value'], ENT_QUOTES, 'UTF-8');
-            $answer = $this->payment->updateValueById($pk, $name, $value);
+            if($model_name == 'payment'){
+                $answer = $this->payment->updateValueById($pk, $name, $value);
+            }elseif($model_name == 'category'){
+                $answer = $this->category->updateValueById($pk, $name, $value);
+            }
             echo $answer;
         }
     }

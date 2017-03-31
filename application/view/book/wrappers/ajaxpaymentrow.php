@@ -22,44 +22,45 @@
         <?php if (isset($payment->direct)) echo htmlspecialchars($payment->direct->name, ENT_QUOTES, 'UTF-8'); ?>
     </a>
 </td>
-<td id="<?=$payment->direct_id.'_'.$payment->id?>" class="payment_summ">
-    <a href="#" id="summ_<?=$payment->id?>">
+<td id="<?=$payment->direct_id.'_'.$payment->id?>">
+    <a href="#" id="summ_<?=$payment->id?>" class="payment_summ">
         <?php if (isset($payment->summ)) echo htmlspecialchars($payment->summ, ENT_QUOTES, 'UTF-8'); ?>
     </a>
 </td>
 <td>
     <a href="#" onclick="event.preventDefault();delete_payment(<?=$payment->id?>)"><i class="icon-trash"></i></a>
-    <a href="#" onclick="event.preventDefault();enter_admin_mode(<?=$payment->id?>,'off')"><i class="icon-ok-circle"></i></a>
+    <a href="#" onclick="event.preventDefault();updateDialog.update_payment_row(<?=$payment->id?>);"><i class="icon-edit"></i></a>
+    <a href="#" onclick="event.preventDefault();enter_admin_mode(<?=$payment->id?>,'off');countPaymentSummItogo();"><i class="icon-ok-circle"></i></a>
 </td>
 
 <script>
     $(function() {
         var id = <?=$payment->id?>;
-        /*
+        var url = location.search + '/book/updateRowByAjax/' +id+'/payment';
+
         $('#date_'+id).editable({
             type: 'date',
             pk: id,
             name: 'date',
-            url: location.search + '/book/updateRowByAjax/' +id,
+            url: url,
             format: 'dd.mm.yyyy',
             viewFormat: 'dd.mm.yyyy',
             mode: 'inline',
-            title: 'Выберите дату',
         });
-        */
+
         $('#summ_'+id).editable({
             type:  'text',
             pk:    id,
             name:  'summ',
-            url:   location.search + '/book/updateRowByAjax/' +id,
-            title: 'Введите сумму',
+            url:  url,
+            mode: 'inline',
             validate: function (value) {
                 if(value.charAt(0) == '-'){
                     return 'Число должно быть положительным';
                 }else if(!isNumber(value)){
                     return 'Значение должно быть числом';
                 }
-            }
+            },
         });
         $('#direct_'+id).editable({
             type:  'select',
@@ -67,13 +68,15 @@
             name:  'direct_id',
             value: <?=$payment->direct_id?>,
             source: <?=json_encode($directs)?>,
-            url:   location.search + '/book/updateRowByAjax/' +id,
-            title: 'Выберите направление',
+            url:   url,
+            mode: 'inline',
             success: function (data) {
                 if(data == 1){
                     $('#paymentrow_'+id).css('background-color','#B1FFA0');
+                    countPaymentSummItogo();
                 }else{
                     $('#paymentrow_'+id).css('background-color','#b67875');
+                    countPaymentSummItogo();
                 }
             }
         });
@@ -83,8 +86,8 @@
             name:  'category_id',
             value: <?=$payment->category_id?>,
             source: <?=json_encode($categories)?>,
-            url:   location.search + '/book/updateRowByAjax/' +id,
-            title: 'Выберите категорию'
+            url:   url,
+            mode: 'inline'
         });
     });
 </script>

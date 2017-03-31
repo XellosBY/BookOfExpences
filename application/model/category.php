@@ -44,4 +44,13 @@ class Category extends Model
         $sql = "DELETE FROM category WHERE id = :id";
         return $this->deleteRow($id, $sql);
     }
+
+    public function updateValueById($pk, $name, $value){
+        $sql = "UPDATE category SET ".$name." = :value WHERE id = :id";
+        $query = $this->db->prepare($sql);
+        $parameters = [':id' => $pk, ':value' => $value];
+        if($query->execute($parameters)){
+            return $value;
+        }
+    }
 }
