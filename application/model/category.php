@@ -32,7 +32,7 @@ class Category extends Model
     public function addCategory($values){
         $sql = "INSERT INTO category (name) VALUES (:name)";
         $query = $this->db->prepare($sql);
-        $parameters = [':name',$values['name']];
+        $parameters = [':name' => $values['name']];
         if($query->execute($parameters)){
             return true;
         }else{

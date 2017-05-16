@@ -6,7 +6,7 @@
  * Time: 13:03
  */
 ?>
-<div id="dialog-form" title="Create new user">
+<div id="dialog-form" title="Редактировать платеж">
     <p class="validateTips">All form fields are required.</p>
 
     <form action="<?=URL?>book/updateExpence">
