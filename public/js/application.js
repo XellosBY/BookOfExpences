@@ -77,6 +77,16 @@ function delete_payment(id) {
         'url': addr,
         'type': 'get',
         'dataType': 'json',
+        /*
+        success: function (data, textStatus, jqXHR) {
+            console.log(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
+            console.log(textStatus);
+            console.log(errorThrown);
+        }
+        */
     });
 }
 

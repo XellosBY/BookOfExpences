@@ -118,7 +118,7 @@
                 <tr id="add_category_row">
                     <td>
                         <label>Название категории</label>
-                        <input type="date" name="Category[name]" id="date" value="" required />
+                        <input name="Category[name]" value="" required />
                     </td>
                     </td>
                     <td>

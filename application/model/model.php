@@ -144,7 +144,9 @@ class Model
     public function deleteRow($id ,$sql){
         $query = $this->db->prepare($sql);
         $parameters = [':id' => $id];
-        if($query->execute($parameters)){
+        $m = $query->execute($parameters);
+
+        if($m){
             return true;
         }else{
             return false;

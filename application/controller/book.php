@@ -196,7 +196,6 @@ class Book extends Controller
         if(isset($id)){
             $this->payment->deletePayment($id);
         }
-
         header('location: ' . URL . 'book/index');
     }
 
