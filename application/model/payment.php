@@ -108,7 +108,7 @@ class Payment extends Model
                 $str.= ' user_id = '.$user_id.' ';
             }
 
-            if($filterParams['sort'] !== 0 && $filterParams['sort'] !=''){
+            if($filterParams['sort'] && $filterParams['sort'] !=''){
                 if($filterParams['sort_option']!=2){
                     $str.= " ORDER BY ". $filterParams['sort']. " ASC";
                 }else{

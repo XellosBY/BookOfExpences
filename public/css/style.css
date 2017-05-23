@@ -161,6 +161,11 @@ body {
     background-image: url("/public/img/ui-icons_777777_256x240.png");
 }
 
+.ui-dialog .ui-dialog-content{
+    position: relative;
+    overflow: hidden;
+}
+
     /*
     buttons start ///////////////////////////////////////////
      */

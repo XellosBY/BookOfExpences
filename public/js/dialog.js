@@ -1,6 +1,10 @@
 /**
  * Created by tim on 30.03.17.
  */
+$('.ui-dialog-titlebar-close').on('click', function () {
+    updateDialog.close_dialog();
+});
+
 var updateDialog = {
     dialog : '',
 
@@ -46,6 +50,11 @@ var updateDialog = {
         }
     },
 
+    close_dialog: function () {
+        $("#dialog-form").dialog("destroy");
+        $('#place_for_dialog').css('display', 'none');
+    },
+
     updateExpence: function() {
         var valid = true;
 
@@ -60,7 +69,7 @@ var updateDialog = {
         valid = valid && updateDialog.checkLength($('#modal_date'), "дата", 8, 12);
         valid = valid && updateDialog.checkLength($('#modal_summ'), "сумма", 1, 80);
 
-        valid = valid && updateDialog.checkRegexp($('#modal_summ'), /^\d+$/, "Поле Сумма заполнено некорректно");
+        valid = valid && updateDialog.checkRegexp($('#modal_summ'), /^^\d+\.?\d*?$/, "Поле Сумма заполнено некорректно");
         valid = valid && updateDialog.checkRegexp($('#modal_date'), /^\d{2}\.\d{2}\.\d{4}/, "корректный формат даты 'дд.мм.уууу.'");
 
         if (valid) {
@@ -70,7 +79,7 @@ var updateDialog = {
                 'type': 'post',
                 'dataType': 'text',
             }).done(function (result) {
-                $("#dialog-form").dialog("close");
+                updateDialog.close_dialog();
                 $('#show_payments_list').trigger('click');
             });
         }
@@ -83,13 +92,13 @@ var updateDialog = {
                 $('#modal_date').datepicker({dateFormat: 'dd.mm.yy'});
                 this.dialog = $( "#dialog-form" ).dialog({
                     autoOpen: false,
-                    height: 400,
-                    width: 350,
+                    width: '250px',
                     modal: true,
+                    position:{ my: "center", at: "center", of: window },
                     buttons: {
                         "Сохранить": updateDialog.updateExpence,
                         "Отмена": function() {
-                            this.dialog.dialog( "close" );
+                            updateDialog.close_dialog();
                         }
                     },
                     close: function() {
@@ -105,9 +114,6 @@ var updateDialog = {
                 this.dialog.dialog( "open" );
             });
     },
-
-
-
 }
 
 /////end dialog part ///////
